@@ -1,0 +1,41 @@
+Hashmaps
+
+Instantiate the object by 
+    Hashmap<type,type> obj = new Hashmap<>();
+
+methods:
+
+1. put() - insert a key value pair in Hashmap ==> put("name","venkatesh")
+2. get() - gets the value of the key ==> get('age') [returns null if not present]
+3. putIfAbsent - insert if not present
+4. remove() - removes a key value pair 
+    return type : bool
+    usage:
+        remove(key, value) => removes exact match
+        remove(key) => removes matching key object
+5. bool containsKey() 
+6. bool containsValue()
+7. int size()
+8. clear()
+9. compute()
+    obj.compute('key', (key,value)-> value+1)
+10. computeIfPresent()
+11. computeIfAbsent(key,(key,value)->0) => used to init value
+12. entrySet - getKey(),getValue() , keySet, valueSet => Set
+
+
+Iterating over Hashmaps
+
+1. using foreach and lambda expression
+    map.foreach((key, value) -> sys.out(key,value))
+
+2. using foreach over ketset
+    map.keyset().foreach((user) -> sys.out(user))
+
+3. using foreach in iteration
+    for(String name:map.keyset()){
+        sys.out(name)
+    }
+    
+4. using Iterator
+    Iterator<Entry<type,type>> it = map.entrySet.iterator()
