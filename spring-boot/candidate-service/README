@@ -44,6 +44,7 @@ Pre-requisites - JDK-17, Maven
     1. cd to the root of the project
     2. Run the command "mvn clean package"
     3. Executable jar will be created in the dir with artifact name in the dir target/
+    4. Start the application with the command "java -jar candidate-service-0.0.1-SNAPSHOT.jar"
 
 To build docker image locally and start -
 Pre-requisites - Docker
