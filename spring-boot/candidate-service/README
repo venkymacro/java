@@ -1,0 +1,55 @@
+candidate-service is used to store profiles of aspiring employees to the organisation.
+
+It performs basic CRUD operations of candidate details.
+
+Components:
+    1. Executable jar file
+    2. MYSQL cloud DB from Aiven.
+    3. Docker
+
+To host the application on cloud:
+    1. Procure an ec2 instance(Ubuntu) from AWS.
+    2. Install docker with the command "apt-get install docker.io"
+    3. Start the application with the command
+        docker run -p 80:5000 --name candidate-service -d venkymacro/candidate-service:v1-RELEASE
+    4. Open port 80 of the ec2 instance.
+    5. Service can be accessed with the public-ip of the ec2 instance.
+           http://<public-ip>/candidates
+
+APIs -
+    1. GET /candidates - List of all the candidates registered
+    2. GET /candidate/<id> - Fetches individual candidate details based on ID.
+    3. POST /candidate - Insert a candidate details
+        Set the headers -> Content-Type = Application/JSON and send the request with body
+        {
+        	"id":1,
+        	"name": "venkatesh",
+        	"exp": "2",
+        	"skill": "JAVA Spring-Boot"
+        }
+    4. PUT /candidate - Update the Candidate details if present
+        Set the headers -> Content-Type = Application/JSON and send the request with body
+        {
+            "id":1,
+            "name": "venkatesh",
+            "exp": "2",
+            "skill": "Cloud Practitioner"
+        }
+    5. DELETE /candidate/<id> - Deletes a candidate based on ID
+
+    A postman collection of the APIs is available in the project as candidate.postman_collection.json which can be imported and used from POSTMAN.
+
+To build the application locally -
+Pre-requisites - JDK-17, Maven
+    1. cd to the root of the project
+    2. Run the command "mvn clean package"
+    3. Executable jar will be created in the dir with artifact name in the dir target/
+
+To build docker image locally and start -
+Pre-requisites - Docker
+    1. cd to the root of the project - Dockerfile is present
+    2. Run the below command to build the image
+        docker build -t candidate-service:v1 -f Dockerfile .
+    3. To create a Container and start the application run the below command.
+        docker run -p 80:5000 -d candidate-service:v1
+
